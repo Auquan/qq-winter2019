@@ -3,6 +3,7 @@ Data, Worksheet and template file for winter 2019 qq
 
 ## Instructions :
 * Download the jupyter notebook Worksheet.ipynb and file `problem1_template.py`.
+* If you are new to jupyter, please follow detailed instructions on how to set it up and run the notebook here: https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/install.html
 * First solve the problem in jupyter notebook Worksheet.ipynb. The worksheet contains helper functions to guide you.
 * Specify the asset group that you are modeling for in function `getSymbolsToTrade()`
 * The bulk of your code will go in the function `getWeights()` where you will fill the logic to assign weights to each asset in that group.
