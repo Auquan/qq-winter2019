@@ -77,17 +77,31 @@ class MyTradingFunctions():
     ###############################################################################
     ###############################################################################
 
-    def getWeights(self, identifiers, reward, wi, Dt, St, Qt, g, U, t, T, P, delta, chi, eta, **kwargs):
+    def getWeights(self, identifiers, reward, wi, Dt, St, Qt, g, U, t, T, P, delta, chi, eta, df, trr, **kwargs):
+        ################################################
+        ####   COPY FROM BELOW INTO TEMPLATE FILE   ####
+        ################################################
         weights = pd.Series(np.random.random(len(identifiers)), index=identifiers)
+        
         weights[Qt==0] = 0
+        
+        ## to use kwargs
+        var = kwargs['var']
+        test = kwargs['func_test'](2)
         weights = weights/weights.sum()
-        while (weights>g).any():
+        if (weights>g).any():
             weights[weights>g] = g
             weights = weights/weights.sum()
-
-        #### THIS IS THE WAY TO USE ANY NEW FEATURES!!!
-        z = self.CustomFeatures.newFeature1()
+        
+        ## You can call new features like below:
+        CustomFeaturesCls = CustomFeatures()
+        test = CustomFeaturesCls.newFeature1()
         return weights
+
+    ## Step 2b: Fill extra arguments below. See sample below
+
+    def getKwargs(self):   
+        return {'var': 2, 'func_test': lambda x: 2*x}
 
     ###############################################################################
     ### TODO 3: OPTIONAL FILL THE LOGIC IN THIS FUNCTION to generae predictions for returns
